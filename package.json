@@ -5,7 +5,7 @@
   "private": false,
   "main": "libs/jxp.js",
   "scripts": {
-    "start": "node bin/server.js",
+    "start": "nodemon bin/server.js",
     "test": "mocha --timeout 1000 -b --exit",
     "wstest": "mocha test/wstest",
     "setup": "node bin/setup.js"
@@ -48,6 +48,7 @@
     "node-cache": "^5.1.2",
     "nodemailer": "^6.9.0",
     "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "pug": "^3.0.2",
     "querystring": "^0.2.1",

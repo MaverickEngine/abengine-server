@@ -1,0 +1,9 @@
+[
+    {
+        "admin": true,
+        "email": "admin@localhost",
+        "password": "admin",
+        "name": "Admin",
+        "urlid": "admin"
+    }
+]

@@ -3,16 +3,19 @@
 // Our general requirements
 const mongoose = require('mongoose');
 const path = require("path");
-const config = require("config");
+const dotenv = require("dotenv");
 const JXPHelper = require('jxp-helper');
 const modeldir = require("./modeldir");
+
+// Load our .env file
+dotenv.config();
 
 // Set some global types
 global.ObjectId = mongoose.Schema.Types.ObjectId;
 global.Mixed = mongoose.Schema.Types.Mixed;
 // Add this to the top of your model to avoid eslint warnings: /* global ObjectId Mixed */
 
-const model_dir = config.model_dir || modeldir.findModelDir(path.dirname(process.argv[1]));
+const model_dir = process.env.MODEL_DIR || modeldir.findModelDir(path.dirname(process.argv[1]));
 
 const getModelFileFromRef = ref => {
     return path.join(model_dir, `${String(ref).toLowerCase()}_model`);

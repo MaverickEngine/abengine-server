@@ -1,6 +1,6 @@
 /*
 =================
-JXP - Express API
+     JXP
 =================
 
 Documentation:
@@ -10,9 +10,13 @@ https://jxp.readthedocs.io/en/latest/
 
 const mongoose = require("mongoose");
 const JXP = require("../libs/jxp");
-const config = require("config");
 require("dotenv").config();
 const pkg = require("../package.json");
+
+// If you want to use the config file, uncomment this line:
+// const config = require("config");
+// and comment out the following line:
+const config = {};
 
 config.callbacks = {
 	// Examples:

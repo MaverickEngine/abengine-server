@@ -9,7 +9,7 @@ The configuration for the MongoDB connection is set as environmental variables (
 ```
 MONGODB_HOST=127.0.0.1
 MONGODB_PORT=27017
-MONGODB_NAME=jxp
+MONGODB_DATABASE=jxp
 MONGODB_AUTH_DB=admin
 MONGODB_USER=user
 MONGODB_PASS=pass

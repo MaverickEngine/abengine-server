@@ -20,10 +20,9 @@ JXP is an opinionated RESTful API framework that lets you make an API just by de
 
 ## Quick Start
 
-    npm install -g jxp
-    jxp-setup my-app
-    cd my-ap
-    npm start
+```bash
+docker-compose up -d
+```
 
 ## Documentation
 

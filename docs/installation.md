@@ -1,8 +1,16 @@
 # Installation
 
-JXP would typically run as a stand-alone server, although you can include it as a Javascript library.
+The easiest way to run JXP is with Docker, but you can also install it locally.
 
-## Requirements
+## Docker Quick-Start
+
+```bash
+docker-compose up -d
+```
+
+## Installing Locally
+
+### Requirements
 
 JXP runs on [Node JS](https://nodejs.org/en/). We support Node v10 and above, and recommend Node v16. It has been tested up to Node v17.
 
@@ -11,10 +19,6 @@ JXP requires a [Mongo](https://www.mongodb.com/) database server to connect to. 
 JXP will also take advantage of Memcache if you have it installed, although it's not a requirement. We can use a local or external Memcache server.
 
 If you want to send out forgotten password links, you'll need an SMTP server you can connect to.
-
-## Running on Docker
-
-You can run JXP on Docker using Docker Compose. Just run `docker-compose up -d` and it should Just Work (tm).
 
 ## Installing the easy way
 

@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/jedi.svg';
-	import github from '$lib/images/github.svg';
+	import github from '$lib/images/github-mark-white.svg';
 </script>
 
 <header>
@@ -123,6 +123,7 @@
 	}
 
 	.github {
-		filter: invert(81%) sepia(93%) saturate(1%) hue-rotate(352deg) brightness(100%) contrast(95%);
+		width: 2em !important;
+		height: 2em !important;
 	}
 </style>

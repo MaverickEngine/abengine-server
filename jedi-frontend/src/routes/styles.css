@@ -50,12 +50,13 @@ a:hover {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 3rem;
 	text-align: center;
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 2rem;
+	color: rgb(69, 69, 69)
 }
 
 pre {

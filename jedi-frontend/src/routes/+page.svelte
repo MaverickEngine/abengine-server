@@ -1,5 +1,4 @@
 <script>
-	import Counter from './Counter.svelte';
 	import jedi_img_svg from '$lib/images/jedi.svg';
 </script>
 
@@ -13,12 +12,8 @@
 	</section>
 
 	<section>
-		<h2>
-			try editing <strong>src/routes/+page.svelte</strong>
-		</h2>
+		<h2>A no-fuss, full-featured Restful back-end.</h2>
 	</section>
-
-	<Counter />
 </div>
 <style>
 
@@ -27,7 +22,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		height: 100vh;
+		min-height: 100vh;
 	}
 
 	.welcome {
@@ -36,13 +31,14 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100px;
+		height: 300px;
+		margin-top: 50px;
 	}
 
 	.welcome img {
 		position: absolute;
 		width: auto;
-		height: 75px;
+		height: 250px;
 		top: 0;
 		display: block;
 	}

@@ -1,6 +1,7 @@
 <script>
 	import Header from './Header.svelte';
 	import './styles.css';
+	const year = new Date().getFullYear();
 </script>
 
 <div class="app">
@@ -11,7 +12,8 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>Copyright {year} Jason Norwood-Young<br>
+		<a href="mailto:jason@10layer.com">jason at 10layer dot com</a></p>
 	</footer>
 </div>
 
@@ -38,6 +40,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		text-align: center;
 		padding: 12px;
 	}
 

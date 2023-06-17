@@ -12,7 +12,7 @@ services:
     volumes:
       - db:/data/db
 
-  jxp:
+  backend:
     depends_on:
       - mongodb
     build: ./
@@ -29,6 +29,19 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./models:/jxp/models
+      - ./models:/jedi/models
+
+  frontend:
+    build: ./jedi-frontend
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./jedi-frontend/src:/opt/jedi-frontend/src
+    environment:
+      - BACKEND=backend
+      - BACKEND_PORT=$NODE_DOCKER_PORT
 volumes:
   db:

@@ -1,58 +1,48 @@
 <script>
 	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import jedi_img_svg from '$lib/images/jedi.svg';
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>JEDI</title>
+	<meta name="description" content="A modern, ready-to-go Restful back-end" />
 </svelte:head>
+<div class="container">
+	<section class="welcome">
+		<img class="logo" src={jedi_img_svg} alt="JEDI" />
+	</section>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<section>
+		<h2>
+			try editing <strong>src/routes/+page.svelte</strong>
+		</h2>
+	</section>
 
 	<Counter />
-</section>
-
+</div>
 <style>
-	section {
+
+	.container {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
+		height: 100vh;
 	}
 
 	.welcome {
-		display: block;
 		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100px;
 	}
 
 	.welcome img {
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		width: auto;
+		height: 75px;
 		top: 0;
 		display: block;
 	}

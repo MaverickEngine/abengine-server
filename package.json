@@ -5,7 +5,10 @@
   "private": false,
   "main": "libs/jxp.js",
   "scripts": {
-    "start": "nodemon bin/server.js",
+    "start": "node bin/server.js",
+    "dev": "nodemon bin/server.js",
+    "start:debug": "nodemon --inspect bin/server.js",
+    "frontend:dev": "cd jedi-frontend && npm run dev",
     "test": "mocha --timeout 1000 -b --exit",
     "wstest": "mocha test/wstest",
     "setup": "node bin/setup.js"

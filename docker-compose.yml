@@ -30,6 +30,7 @@ services:
     tty: true
     volumes:
       - ./models:/jedi/models
+      - ./libs:/jedi/libs
 
   frontend:
     build: ./jedi-frontend
@@ -40,6 +41,7 @@ services:
     tty: true
     volumes:
       - ./jedi-frontend/src:/opt/jedi-frontend/src
+    env_file: ./.env
     environment:
       - BACKEND=backend
       - BACKEND_PORT=$NODE_DOCKER_PORT

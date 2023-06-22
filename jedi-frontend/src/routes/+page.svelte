@@ -1,5 +1,11 @@
 <script>
 	import jedi_img_svg from '$lib/images/jedi.svg';
+	import { check_status } from "../lib/api/jedi.js"
+	
+	async function do_check_status() {
+		const status = await check_status()
+		console.log(status)
+	}
 </script>
 
 <svelte:head>
@@ -13,6 +19,10 @@
 
 	<section>
 		<h2>A no-fuss, full-featured Restful back-end.</h2>
+	</section>
+
+	<section>
+		<input type="button" value="Check Status" on:click={do_check_status} />
 	</section>
 </div>
 <style>

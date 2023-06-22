@@ -1,6 +1,6 @@
 FROM node:17
 
-WORKDIR /jxp
+WORKDIR /jedi
 COPY package.json .
 RUN yarn install
 COPY . .

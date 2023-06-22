@@ -901,7 +901,14 @@ const JXP = function(options) {
 	});
 
 	// Define our endpoints
-
+	server.get("/status", async (req, res) => {
+		const status_lib = require("./status");
+		// if (!models["user"]) return next(new Error("No user model defined"));
+		const status = await status_lib.check_status(models["user"]);
+		status.version = require(path.join(__dirname, "../package.json")).version;
+		// status.state = "OK";
+		res.send({status});
+	});
 	/* Our API endpoints */
 	server.get(
 		"/api/:modelname",

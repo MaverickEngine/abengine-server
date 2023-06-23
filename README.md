@@ -1,6 +1,6 @@
-# JXP
+# JEDI
 
-JXP is an opinionated RESTful API framework that lets you make an API just by defining models.
+JEDI is a complete back-end system that makes it quick to itterate new features and fuctionality. It features access control, permissioning, business logic, and a RESTful API out of the box. It is built on top of JXP.
 
 ## Features
 

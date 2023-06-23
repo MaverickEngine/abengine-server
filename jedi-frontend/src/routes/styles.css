@@ -106,3 +106,13 @@ button:focus:not(:focus-visible) {
 	width: 1px;
 	white-space: nowrap;
 }
+
+.button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-radius: 3px;
+	background-color: var(--color-theme-1);
+	color: white;
+	font-weight: 600;
+	text-decoration: none;
+}

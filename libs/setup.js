@@ -3,7 +3,7 @@ const path = require("path");
 const errors = require("restify-errors");
 const security = require("./security");
 const ObjectID = require('mongodb').ObjectID;
-var User = null;
+let User = null;
 const connection_string = require("./connection_string");
 
 const init = config => {
@@ -25,20 +25,26 @@ const checkUserDoesNotExist = async () => {
 
 const setup = async (req, res) => {
 	try {
+		console.log("Creating admin user");
+		const { MongoClient } = require("mongodb");
+		const client = await MongoClient.connect(connection_string);
+		const db = client.db(client.databaseName);
+		// console.log(req.body.email, req.body.password);
 		const password = (req.body && req.body.password) ? req.body.password : rand_token.generate(12);
-		const user = new User({
+		const user = {
 			password: security.encPassword(password),
 			email: req.body.email || "admin@example.com",
 			name: req.body.name || "admin",
 			admin: true
-		});
-		await user.save();
+		};
+		const result = await db.collection("users").insertOne(user);
 		console.log(
 			"Created admin user",
 			user.name,
 			"<" + user.email + ">",
 			":",
-			password
+			password,
+			result
 		);
 		res.send({
 			status: "success",

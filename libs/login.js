@@ -148,7 +148,7 @@ const login = async (req, res) => {
 	}
 	if ((!password) || (!email)) {
 		console.error(new Date(), "Missing email or password parameters");
-		return new errors.ForbiddenError("Missing email or password parameters");
+		throw new errors.ForbiddenError("Missing email or password parameters");
 	}
 	try {
 		const user = await User.findOne({ email });
@@ -170,8 +170,8 @@ const login = async (req, res) => {
 		});
 	} catch (err) {
 		console.error(new Date(), `Authentication failed`, ip, err);
-		if (err.code) throw err;
-		return new errors.ForbiddenError(err.toString());
+		// if (err.code) throw err;
+		throw new errors.ForbiddenError(err.toString());
 	}
 }
 

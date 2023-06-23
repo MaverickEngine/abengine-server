@@ -15,7 +15,8 @@ var UserSchema = new JXPSchema({
 		owner: "cru",
 		user: "r",
 		member: "r",
-		api: "r"
+		api: "r",
+		all: ""
 	}
 });
 

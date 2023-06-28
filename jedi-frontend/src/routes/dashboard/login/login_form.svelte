@@ -1,9 +1,10 @@
+<script>
+    import Input from '$lib/ui/input.svelte';
+    import Button from '$lib/ui/button.svelte';
+</script>
+
 <form method="POST">
-    <label for="email">Email
-        <input type="email" id="email" name="email" placeholder="admin@jedi.com">
-    </label>
-    <label for="password">Password
-        <input type="password" id="password" name="password" placeholder="password">
-    </label>
-    <button type="submit">Submit</button>
+    <Input label="Email" type="email" name="email" id="email" />
+    <Input label="Password" type="password" name="password" id="password" />
+    <Button type="submit">Login</Button>
 </form>

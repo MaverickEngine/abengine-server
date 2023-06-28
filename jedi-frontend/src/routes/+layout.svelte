@@ -1,4 +1,5 @@
 <script>
+	import '../app.postcss';
 	import Header from './Header.svelte';
 	import './styles.css';
 	const year = new Date().getFullYear();
@@ -12,8 +13,10 @@
 	</main>
 
 	<footer>
-		<p>Copyright {year} Jason Norwood-Young<br>
-		<a href="mailto:jason@10layer.com">jason at 10layer dot com</a></p>
+		<p>
+			Copyright {year} Jason Norwood-Young<br />
+			<a href="mailto:jason@10layer.com">jason at 10layer dot com</a>
+		</p>
 	</footer>
 </div>
 

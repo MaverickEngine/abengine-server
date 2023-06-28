@@ -10,6 +10,7 @@
     "start:debug": "nodemon --inspect bin/server.js",
     "frontend:dev": "cd jedi-frontend && npm run dev",
     "test": "mocha --timeout 1000 -b --exit",
+    "abtest": "mocha test/abengine.test.js",
     "wstest": "mocha test/wstest",
     "setup": "node bin/setup.js"
   },

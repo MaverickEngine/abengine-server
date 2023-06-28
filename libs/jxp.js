@@ -433,7 +433,7 @@ const actionCall = async (req, res) => {
 
 const actionCallItem = async (req, res) => {
 	try {
-		const item = req.Model.findById(req.params.item_id);
+		const item = await req.Model.findById(req.params.item_id);
 		if (!item) {
 			throw new errors.NotFoundError(`Couldn't find item ${req.params.item_id} on ${req.modelname} for call`);
 		}

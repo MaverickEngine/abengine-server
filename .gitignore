@@ -7,3 +7,4 @@ config/*
 package-lock.json
 site/*
 yarn.lock
+.env

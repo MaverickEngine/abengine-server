@@ -1,6 +1,6 @@
 <form method="POST">
     <label for="email">Administrator Email
-        <input type="email" id="email" name="email" placeholder="admin@jedi.com">
+        <input type="email" id="email" name="email" placeholder="admin@edji.com">
     </label>
     <label for="password">Administrator Password
         <input type="password" id="password" name="password" placeholder="password">

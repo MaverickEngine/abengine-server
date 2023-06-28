@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/jedi.svg';
+	import logo from '$lib/images/edji-logo.svg';
 	import github from '$lib/images/github-mark-white.svg';
 </script>
 
@@ -29,7 +29,7 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/j-norwood-young/jedi">
+		<a href="https://github.com/j-norwood-young/edji">
 			<img class="github" src={github} alt="GitHub" />
 		</a>
 	</div>

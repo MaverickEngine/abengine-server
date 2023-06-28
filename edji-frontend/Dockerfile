@@ -1,6 +1,6 @@
 FROM node:18
 
-WORKDIR /opt/jedi-frontend
+WORKDIR /opt/edji-frontend
 COPY package.json .
 RUN yarn install
 COPY . .

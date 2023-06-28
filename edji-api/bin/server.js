@@ -1,6 +1,6 @@
 /*
 =================
-     JXP
+     EDJI Server
 =================
 
 Documentation:
@@ -9,7 +9,7 @@ https://jxp.readthedocs.io/en/latest/
 */
 
 const mongoose = require("mongoose");
-const JXP = require("../libs/jxp");
+const EDJI = require("../libs/jxp");
 require("dotenv").config();
 const pkg = require("../package.json");
 
@@ -79,7 +79,7 @@ db.once('open', () => {
 	console.log(`Connected to Mongo at: ${new Date()}`);
 });
 
-var server = new JXP(config);
+var server = new EDJI(config);
 
 let port = process.env.NODE_DOCKER_PORT || process.env.PORT || config.port || 4001;
 if (process.env.NODE_ENV === "test") port = 4005;

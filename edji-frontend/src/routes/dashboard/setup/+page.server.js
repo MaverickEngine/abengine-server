@@ -1,4 +1,4 @@
-import { check_status } from "$lib/api/jedi.js"
+import { check_status } from "$lib/api/edji.js"
 import { error } from "@sveltejs/kit";
 import { redirect }  from "@sveltejs/kit"
 

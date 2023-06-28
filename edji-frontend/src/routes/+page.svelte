@@ -1,15 +1,15 @@
 <script>
-	import jedi_img_svg from '$lib/images/jedi.svg';
+	import logo from '$lib/images/edji-logo.svg';
 	export let data;
 </script>
 
 <svelte:head>
-	<title>JEDI</title>
+	<title>EDJI</title>
 	<meta name="description" content="A modern, ready-to-go Restful back-end" />
 </svelte:head>
 <div class="container">
 	<section class="welcome">
-		<img class="logo" src={jedi_img_svg} alt="JEDI" />
+		<img class="logo" src={logo} alt="EDJI" />
 	</section>
 
 	<section>
@@ -33,6 +33,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 300px;
+		width: 600px;
 		margin-top: 50px;
 	}
 

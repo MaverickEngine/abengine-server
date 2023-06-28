@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-    <title>JEDI :: Login</title>
+    <title>EDJI :: Login</title>
 </svelte:head>
 
 <div class="container">

@@ -20,7 +20,7 @@ const check_status = async (User) => {
         }
         return {
             state: "ok",
-            message: "Jedi API is running."
+            message: "EDJI API is running."
         }
     } catch(err) {
         return {

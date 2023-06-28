@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-    <title>JEDI :: Setup</title>
+    <title>EDJI :: Setup</title>
 </svelte:head>
 
 <div>
@@ -16,7 +16,7 @@
     {/if}
     {#if data.status.state !== "setup"}
     <Alert type="info">
-        <p>JEDI is already set up.</p> 
+        <p>EDJI is already set up.</p> 
         <div ><a href="/dashboard" class="button">Dashboard</a></div>
     </Alert>
     {/if}

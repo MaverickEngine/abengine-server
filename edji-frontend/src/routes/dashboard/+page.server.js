@@ -1,5 +1,5 @@
 import { redirect }  from "@sveltejs/kit"
-import { check_status } from "$lib/api/jedi.js"
+import { check_status } from "$lib/api/edji.js"
 
 export async function load({ cookies }) {
     // Check status

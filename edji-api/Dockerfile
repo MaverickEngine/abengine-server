@@ -1,6 +1,6 @@
 FROM node:17
 
-WORKDIR /jedi
+WORKDIR /opt/edji-api
 COPY package.json .
 RUN yarn install
 COPY . .

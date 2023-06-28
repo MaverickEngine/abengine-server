@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>JEDI :: Dashboard</title>
+	<title>EDJI :: Dashboard</title>
 	<meta name="description" content="A modern, ready-to-go Restful back-end" />
 </svelte:head>
 <div class="container">

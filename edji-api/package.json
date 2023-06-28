@@ -1,5 +1,5 @@
 {
-  "name": "@10layer/edji-frontend",
+  "name": "@10layer/edji-api",
   "description:": "An opinionated RESTful API library based on Mongoose and Restify. Make an API by just writing Mongoose models.",
   "version": "2.14.0",
   "private": false,
@@ -8,7 +8,6 @@
     "start": "node bin/server.js",
     "dev": "nodemon bin/server.js",
     "start:debug": "nodemon --inspect bin/server.js",
-    "frontend:dev": "cd edji-frontend && npm run dev",
     "test": "mocha --timeout 1000 -b --exit",
     "wstest": "mocha test/wstest",
     "setup": "node bin/setup.js"

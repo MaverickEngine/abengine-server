@@ -12,14 +12,14 @@ services:
     volumes:
       - db:/data/db
 
-  backend:
+  api:
     depends_on:
       - mongodb
-    build: ./
+    build: ./edji-api
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - $API_PORT:$API_PORT
     environment:
       - DB_HOST=mongodb
       - DB_USER=$MONGODB_USER
@@ -29,21 +29,21 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./models:/jedi/models
-      - ./libs:/jedi/libs
+      - ./edji-api/models:/opt/edji-api/models
+      - ./edji-api/libs:/opt/edji-api/libs
 
   frontend:
-    build: ./jedi-frontend
+    build: ./edji-frontend
     restart: unless-stopped
     ports:
-      - 8080:8080
+      - $FRONTEND_PORT:$FRONTEND_PORT
     stdin_open: true
     tty: true
     volumes:
-      - ./jedi-frontend/src:/opt/jedi-frontend/src
+      - ./edji-frontend/src:/opt/edji-frontend/src
     env_file: ./.env
     environment:
-      - BACKEND=backend
-      - BACKEND_PORT=$NODE_DOCKER_PORT
+      - API=api
+      - API_PORT=$API_PORT
 volumes:
   db:

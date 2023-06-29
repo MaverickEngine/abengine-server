@@ -1,9 +1,0 @@
-FROM node:18
-
-WORKDIR /opt/jedi-frontend
-COPY package.json .
-RUN yarn install
-COPY . .
-ENV HOST=0.0.0.0
-EXPOSE 8080
-CMD yarn dev

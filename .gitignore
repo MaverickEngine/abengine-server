@@ -8,3 +8,4 @@ package-lock.json
 site/*
 yarn.lock
 .env
+*/node_modules/*

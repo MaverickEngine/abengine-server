@@ -1,6 +1,6 @@
 /* global JXPSchema ObjectId */
-const MultiArmedBandit = require("../libs/abengine/libs/multi_armed_bandit");
-const Experiment = require("./experiment_model");
+// const MultiArmedBandit = require("../libs/abengine/libs/multi_armed_bandit");
+// const Experiment = require("./experiment_model");
 
 const CampaignSchema = new JXPSchema({
     name: { type: String, unique: true, index: true, required: true, trim: true, lowercase: true },
@@ -56,36 +56,36 @@ CampaignSchema.statics.create_campaign = async function (data) {
     }
 }
 
-CampaignSchema.statics.serve_experiment = async function (campaign) {
-    try {
-        if (!campaign) {
-            throw new Error("No campaign found");
-        }
-        const experiments = await Experiment.find({ campaign_id: campaign._id, running: true });
-        if (!experiments || experiments.length === 0) {
-            throw new Error("No experiments found");
-        }
-        const bandit = new MultiArmedBandit(experiments);
-        const sample_experiment = bandit.sample();
-        // console.log(sample_experiment);
-        const experiment = await Experiment.findOne(sample_experiment._id);
-        if (!experiment) {
-            throw new Error("No experiment found");
-        }
-        experiment.hits++;
-        await experiment.save();
-        return {
-            success: true,
-            experiment
-        };
-    } catch (err) {
-        console.error(err);
-        return {
-            success: false,
-            error: err.toString()
-        };
-    }
-}
+// CampaignSchema.statics.serve_experiment = async function (campaign) {
+//     try {
+//         if (!campaign) {
+//             throw new Error("No campaign found");
+//         }
+//         const experiments = await Experiment.find({ campaign_id: campaign._id, running: true });
+//         if (!experiments || experiments.length === 0) {
+//             throw new Error("No experiments found");
+//         }
+//         const bandit = new MultiArmedBandit(experiments);
+//         const sample_experiment = bandit.sample();
+//         // console.log(sample_experiment);
+//         const experiment = await Experiment.findOne(sample_experiment._id);
+//         if (!experiment) {
+//             throw new Error("No experiment found");
+//         }
+//         experiment.hits++;
+//         await experiment.save();
+//         return {
+//             success: true,
+//             experiment
+//         };
+//     } catch (err) {
+//         console.error(err);
+//         return {
+//             success: false,
+//             error: err.toString()
+//         };
+//     }
+// }
 
 const Campaign = JXPSchema.model('Campaign', CampaignSchema);
 module.exports = Campaign;

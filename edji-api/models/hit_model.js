@@ -6,6 +6,11 @@ const HitSchema = new JXPSchema({
     user_agent: { type: String, index: true },
     referrer: { type: String, index: true },
     timestamp: { type: Date, index: true, default: Date.now},
+    utm_campaign: { type: String, index: true },
+    utm_content: { type: String, index: true },
+    utm_medium: { type: String, index: true },
+    utm_source: { type: String, index: true },
+    utm_term: { type: String, index: true },
     data: { type: Mixed },
 },
 {
@@ -16,14 +21,11 @@ const HitSchema = new JXPSchema({
     }
 });
 
-HitSchema.post('save', function(next) {
+HitSchema.post('save', async function() {
     const Experiment = require("./experiment_model");
-    Experiment.findOne({ _id: this.experiment_id }, function(err, experiment) {
-        if (err) { return next(err); }
-        experiment.hits++;
-        experiment.save();
-    });
-    next();
+    const experiment = await Experiment.findOne({ _id: this.experiment_id });
+    experiment.hits++;
+    experiment.save();
 });
 
 const Hit = JXPSchema.model('Hit', HitSchema);

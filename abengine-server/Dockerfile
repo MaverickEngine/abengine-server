@@ -1,7 +1,5 @@
 FROM node:17
 
 WORKDIR /opt/abengine-server
-COPY package.json .
-RUN yarn install
 COPY . .
-CMD yarn dev
+CMD sh -c "npm install -g nodemon && npm install && npm run dev "

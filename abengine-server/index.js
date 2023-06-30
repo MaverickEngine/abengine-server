@@ -152,6 +152,11 @@ server.get("/autowin/:campaign_id", async (req, res) => {
 
 
 server.listen(80, async function () {
+    try {
+        await axios.post("http://api:4001/setup", { email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD });
+    } catch (err) {
+        console.log("Already setup");
+    }
     const admin_email = process.env.ADMIN_EMAIL;
     const admin_password = process.env.ADMIN_PASSWORD;
     const login = await axios.post("http://api:4001/login", { email: admin_email, password: admin_password });

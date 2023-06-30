@@ -69,92 +69,92 @@ describe('Tests', () => {
 		});
     });
 
-    // describe("serve_experiment_1", () => {
-    //     const iterations = 10;
-    //     for (let x = 0; x < iterations; x++) {
-    //         it("it should serve an experiment", (done) => {
-    //             chai.request(abengine_server)
-    //                 .get(`/serve/${campaign_id}`)
-    //                 .end((err, res) => {
-    //                     console.log(res.body);
-    //                     res.should.have.status(200);
-    //                     res.body.experiment.should.have.property('_id');
-    //                     res.body.experiment.should.have.property('name');
-    //                     res.body.experiment.should.have.property('value');
-    //                     // Check cookies
-    //                     res.should.have.cookie(`abengine_campaign_${campaign_id}`);
-    //                     done();
-    //             });
-    //         });
-    //     }
-    // });
+    describe("serve_experiment_1", () => {
+        const iterations = 10;
+        for (let x = 0; x < iterations; x++) {
+            it("it should serve an experiment", (done) => {
+                chai.request(abengine_server)
+                    .get(`/serve/${campaign_id}`)
+                    .end((err, res) => {
+                        console.log(res.body);
+                        res.should.have.status(200);
+                        res.body.experiment.should.have.property('_id');
+                        res.body.experiment.should.have.property('name');
+                        res.body.experiment.should.have.property('value');
+                        // Check cookies
+                        res.should.have.cookie(`abengine_campaign_${campaign_id}`);
+                        done();
+                });
+            });
+        }
+    });
 
-    // let win_count = 0;
-    // describe("win_experiment", () => {
-    //     const iterations = 100;
-    //     for (let x = 0; x < iterations; x++) {
-    //         it("it should win an experiment", (done) => {
-    //             chai.request(abengine_server)
-    //                 .get(`/win/${experiments[0]._id}`)
-    //                 .end((err, res) => {
-    //                     console.log(res.body);
-    //                     res.should.have.status(200);
-    //                     res.body.success.should.equal(true);
-    //                     done();
-    //             });
-    //         });
-    //     }
-    // });
+    let win_count = 0;
+    describe("win_experiment", () => {
+        const iterations = 100;
+        for (let x = 0; x < iterations; x++) {
+            it("it should win an experiment", (done) => {
+                chai.request(abengine_server)
+                    .get(`/win/${experiments[0]._id}`)
+                    .end((err, res) => {
+                        console.log(res.body);
+                        res.should.have.status(200);
+                        res.body.success.should.equal(true);
+                        done();
+                });
+            });
+        }
+    });
     
 
-    // describe("serve_experiment_2", () => {
-    //     const iterations = 100;
-    //     for (let x = 0; x < iterations; x++) {
-    //         it("it should serve an experiment", (done) => {
-    //             chai.request(abengine_server)
-    //                 .get(`/serve/${campaign_id}`)
-    //                 .end((err, res) => {
-    //                     console.log(res.body);
-    //                     if (res.body.experiment._id === experiments[0]._id) {
-    //                         win_count++;
-    //                     }
-    //                     res.should.have.status(200);
-    //                     res.body.experiment.should.have.property('_id');
-    //                     res.body.experiment.should.have.property('name');
-    //                     res.body.experiment.should.have.property('value');
-    //                     done();
-    //             });
-    //         });
-    //     }
+    describe("serve_experiment_2", () => {
+        const iterations = 100;
+        for (let x = 0; x < iterations; x++) {
+            it("it should serve an experiment", (done) => {
+                chai.request(abengine_server)
+                    .get(`/serve/${campaign_id}`)
+                    .end((err, res) => {
+                        console.log(res.body);
+                        if (res.body.experiment._id === experiments[0]._id) {
+                            win_count++;
+                        }
+                        res.should.have.status(200);
+                        res.body.experiment.should.have.property('_id');
+                        res.body.experiment.should.have.property('name');
+                        res.body.experiment.should.have.property('value');
+                        done();
+                });
+            });
+        }
 
-    //     it("it should have served the winning experiment 50% or more of the time", (done) => {
-    //         console.log(win_count);
-    //         win_count.should.be.greaterThanOrEqual(iterations / 2);
-    //         done();
-    //     });
-    // });
+        it("it should have served the winning experiment 50% or more of the time", (done) => {
+            console.log(win_count);
+            win_count.should.be.greaterThanOrEqual(iterations / 2);
+            done();
+        });
+    });
 
-    // describe("test_404s", () => {
-    //     it("serve should return a 404 error", (done) => {
-    //         chai.request(abengine_server)
-    //             .get(`/serve/649e7f4bf4cae41b1a0cb3f8`)
-    //             .end((err, res) => {
-    //                 console.log(res.body);
-    //                 res.should.have.status(404);
-    //                 done();
-    //         });
-    //     });
+    describe("test_404s", () => {
+        it("serve should return a 404 error", (done) => {
+            chai.request(abengine_server)
+                .get(`/serve/649e7f4bf4cae41b1a0cb3f8`)
+                .end((err, res) => {
+                    console.log(res.body);
+                    res.should.have.status(404);
+                    done();
+            });
+        });
 
-    //     it("win should return a 404 error", (done) => {
-    //         chai.request(abengine_server)
-    //             .get(`/win/649e7f4bf4cae41b1a0cb3f8`)
-    //             .end((err, res) => {
-    //                 console.log(res.body);
-    //                 res.should.have.status(404);
-    //                 done();
-    //         });
-    //     });
-    // });
+        it("win should return a 404 error", (done) => {
+            chai.request(abengine_server)
+                .get(`/win/649e7f4bf4cae41b1a0cb3f8`)
+                .end((err, res) => {
+                    console.log(res.body);
+                    res.should.have.status(404);
+                    done();
+            });
+        });
+    });
 
     describe("test_cookies", () => {
         let cookies;

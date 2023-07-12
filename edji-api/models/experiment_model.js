@@ -2,14 +2,15 @@
 
 const ExperimentSchema = new JXPSchema({
     campaign_id: { type: ObjectId, link: "Campaign", required: true, index: true },
-    name: { type: String, required: true, trim: true, lowercase: true },
+    uid: { type: String, trim: true, lowercase: true },
+    user_id: { type: ObjectId, link: "User" },
     value: { type: Mixed },
     hits: { type: Number, default: 0 },
     wins: { type: Number, default: 0 },
     running: { type: Boolean, default: true },
     start_date: { type: Date, index: true, default: Date.now},
     end_date: { type: Date, index: true },
-    user_id: { type: ObjectId, link: "User" },
+    data: { type: Mixed },
 },
 {
     perms: {
@@ -18,6 +19,8 @@ const ExperimentSchema = new JXPSchema({
         user: "c",
     }
 });
+
+ExperimentSchema.index({ uid: 1, campaign_id: 1 }, { unique: true });
 
 ExperimentSchema.pre('save', function(next) {
     if (this.isNew) {

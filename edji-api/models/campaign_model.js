@@ -1,13 +1,14 @@
-/* global JXPSchema ObjectId */
+/* global JXPSchema ObjectId Mixed */
 // const MultiArmedBandit = require("../libs/abengine/libs/multi_armed_bandit");
 // const Experiment = require("./experiment_model");
 
 const CampaignSchema = new JXPSchema({
-    name: { type: String, unique: true, index: true, required: true, trim: true, lowercase: true },
+    uid: { type: String, unique: true, index: true, required: true, trim: true, lowercase: true },
+    user_id: { type: ObjectId, link: "User", index: true, required: true },
     running: { type: Boolean, default: false },
     start_date: { type: Date, index: true, default: Date.now},
     end_date: { type: Date, index: true },
-    user_id: { type: ObjectId, link: "User" },
+    data: { type: Mixed },
 },
 {
     perms: {
@@ -18,27 +19,47 @@ const CampaignSchema = new JXPSchema({
     }
 });
 
+CampaignSchema.index({ uid: 1, user_id: 1 }, { unique: true });
+
+CampaignSchema.pre('save', async function() {
+    if (this.isNew && this.__user && this.__user._id) {
+        this.user_id = this.__user._id;
+    }
+});
+
 CampaignSchema.statics.create_campaign = async function (data) {
     const Experiment = require("./experiment_model");
     try {
-        if (!data.name) {
-            throw new Error("No name provided");
+        if (!data.uid) {
+            throw new Error("No uid provided");
         }
-        const campaign = new Campaign(data);
+        const user_id = data.__user._id;
+        if (!user_id) {
+            throw new Error("No user_id provided");
+        }
+        const campaign_data = {
+            uid: data.uid,
+            user_id: user_id,
+            running: data.running,
+            start_date: data.start_date || Date.now(),
+            end_date: data.end_date || null,
+            data: data.data || {}
+        }
+        const campaign = new Campaign(campaign_data);
         await campaign.save();
-        const id = campaign._id;
         let experiments = [];
         if (data.experiments) {
             for (let i = 0; i < data.experiments.length; i++) {
-                data.experiments[i].campaign_id = id;
-                data.experiments[i].running = campaign.running;
-                if (!data.experiments[i].start_date) {
-                    data.experiments[i].start_date = campaign.start_date;
+                const experiment_data = {
+                    campaign_id: campaign._id,
+                    uid: data.experiments[i].uid,
+                    value: data.experiments[i].value,
+                    running: data.experiments[i].running,
+                    start_date: data.experiments[i].start_date || campaign.start_date,
+                    end_date: data.experiments[i].end_date || campaign.end_date,
+                    data: data.experiments[i].data
                 }
-                if (!data.experiments[i].end_date) {
-                    data.experiments[i].end_date = campaign.end_date;
-                }
-                const experiment = new Experiment(data.experiments[i]);
+                const experiment = new Experiment(experiment_data);
                 await experiment.save();
                 experiments.push(experiment);
             }
@@ -49,6 +70,7 @@ CampaignSchema.statics.create_campaign = async function (data) {
             experiments
         };
     } catch (err) {
+        console.error(err);
         return {
             success: false,
             error: err.toString()

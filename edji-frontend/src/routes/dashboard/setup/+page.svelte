@@ -11,8 +11,10 @@
 <div class="block">
     <h1>Setup</h1>
     {#if data.status.state === "setup"}
-    <h3>This looks like the first time you're using this instance of EDJI.</h3>
-    <h3>Let's get you started!</h3>
+    <div class="m-6">
+        <p class="text-lg font-bold">This looks like the first time you're using this instance of EDJI.</p>
+        <p>Let's get you started!</p>
+    </div>
     <SetupForm />
     {/if}
     {#if data.status.state !== "setup"}

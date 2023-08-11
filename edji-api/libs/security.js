@@ -69,7 +69,7 @@ const bearerAuth = async t => {
 		if (!t) throw("Token invalid");
 		const token = await Token.findOne({ access_token: t, provider }).exec();
 		if (!token) {
-			throw(`Token ${t} not found`);
+			throw(`Token ${t.replace(/.(?=...)/g, "*")} not found`);
 		}
 		if (!tokenIsValid(token)) {
 			throw(`Token is no loger valid`);

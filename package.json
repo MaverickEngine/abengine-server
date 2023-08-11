@@ -1,7 +1,7 @@
 {
   "name": "@10layer/edji-frontend",
   "description:": "An opinionated RESTful API library based on Mongoose and Restify. Make an API by just writing Mongoose models.",
-  "version": "2.14.0",
+  "version": "2.14.1",
   "private": false,
   "main": "libs/jxp.js",
   "scripts": {

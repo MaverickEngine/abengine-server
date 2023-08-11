@@ -1,4 +1,4 @@
-const BACKEND = "http://api:4001";
+export const BACKEND = "http://api:4001";
 
 export async function check_status() {
     try {

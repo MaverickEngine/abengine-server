@@ -1,11 +1,12 @@
 import { redirect }  from "@sveltejs/kit"
+import { BACKEND } from "$lib/api/edji.js";
 
 export const actions = {
     default: async ({ request, cookies }) => {
         const data = await request.formData();
         const email = data.get("email");
         const password = data.get("password");
-        const result = await fetch("http://backend:4001/login", {
+        const result = await fetch(`${BACKEND}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

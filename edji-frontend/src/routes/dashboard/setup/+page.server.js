@@ -1,4 +1,4 @@
-import { check_status } from "$lib/api/edji.js"
+import { BACKEND, check_status } from "$lib/api/edji.js"
 import { error } from "@sveltejs/kit";
 import { redirect }  from "@sveltejs/kit"
 
@@ -34,8 +34,11 @@ export const actions = {
         if (password !== password_confirm) {
             throw error(400, "Passwords do not match.");
         }
+        if (password.length < 8) {
+            throw error(400, "Password must be at least 8 characters.");
+        }
         try {
-            const result = await fetch("http://backend:4001/setup", {
+            const result = await fetch(`${BACKEND}/setup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

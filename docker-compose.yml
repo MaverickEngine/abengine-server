@@ -41,6 +41,7 @@ services:
     tty: true
     volumes:
       - ./edji-frontend/src:/opt/edji-frontend/src
+      - ./edji-frontend/package.json:/opt/edji-frontend/package.json
     env_file: ./.env
     environment:
       - API=api

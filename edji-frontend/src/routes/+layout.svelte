@@ -1,13 +1,21 @@
 <script>
+	import { page } from '$app/stores';
 	import '../app.postcss';
 	import Header from './Header.svelte';
 	import './styles.css';
+	
 	const year = new Date().getFullYear();
+	let logged_in = false;
+	let session;
+	$: {
+		session = $page.data?.session;
+		logged_in = (session.token);
+	}
+
 </script>
 
 <div class="app">
-	<Header />
-
+	<Header logged_in={logged_in} />
 	<main>
 		<slot />
 	</main>

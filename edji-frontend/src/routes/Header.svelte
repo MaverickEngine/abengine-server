@@ -2,6 +2,8 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/edji-logo.svg';
 	import github from '$lib/images/github-mark-white.svg';
+
+	export let logged_in = false;
 </script>
 
 <header>
@@ -29,6 +31,13 @@
 	</nav>
 
 	<div class="corner">
+		{#if (logged_in)}
+			<form method="POST" action="/logout">
+				<button type="submit">Logout</button>
+			</form>
+		{:else}
+			<a href="/login">Login</a>
+		{/if}
 		<a href="https://github.com/j-norwood-young/edji">
 			<img class="github" src={github} alt="GitHub" />
 		</a>

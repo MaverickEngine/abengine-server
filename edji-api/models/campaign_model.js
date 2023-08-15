@@ -1,10 +1,9 @@
 /* global JXPSchema ObjectId Mixed */
-// const MultiArmedBandit = require("../libs/abengine/libs/multi_armed_bandit");
-// const Experiment = require("./experiment_model");
 
 const CampaignSchema = new JXPSchema({
+    name: { type: String, index: true, trim: true },
     uid: { type: String, unique: true, index: true, required: true, trim: true, lowercase: true },
-    user_id: { type: ObjectId, link: "User", index: true, required: true },
+    user_id: { type: ObjectId, link: "User", index: true },
     running: { type: Boolean, default: false },
     start_date: { type: Date, index: true, default: Date.now},
     end_date: { type: Date, index: true },

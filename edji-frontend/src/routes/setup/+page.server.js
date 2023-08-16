@@ -18,7 +18,7 @@ export async function load() {
         throw error(500, status.message);
     }
     if (status.state !== "setup") {
-        throw redirect(307, "/dashboard");
+        throw redirect(303, "/dashboard");
     }
     return {
         status

@@ -14,13 +14,13 @@
 
 </script>
 
-<div class="app">
+<div class="app min-h-screen flex flex-col">
 	<Header logged_in={logged_in} />
-	<main>
+	<main class="min-w-full grow">
 		<slot />
 	</main>
 
-	<footer>
+	<footer class="mt-auto flex flex-col bg-zinc-800 text-slate-200 text-center">
 		<p>
 			Copyright {year} Jason Norwood-Young<br />
 			<a href="mailto:jason@10layer.com">jason at 10layer dot com</a>
@@ -29,7 +29,7 @@
 </div>
 
 <style>
-	.app {
+	/* .app {
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
@@ -63,5 +63,5 @@
 		footer {
 			padding: 12px 0;
 		}
-	}
+	} */
 </style>

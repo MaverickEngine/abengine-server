@@ -1,9 +1,8 @@
 {
-  "name": "@10layer/edji-frontend",
-  "description:": "An opinionated RESTful API library based on Mongoose and Restify. Make an API by just writing Mongoose models.",
-  "version": "2.14.0",
-  "private": false,
-  "main": "libs/jxp.js",
+  "name": "@mavengine/abengine-server",
+  "description:": "A smart server that advises you which version of an A/B test to show to a user",
+  "version": "0.0.2",
+  "private": true,
   "scripts": {
     "start": "node bin/server.js",
     "dev": "nodemon bin/server.js",
@@ -21,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/10layer/edji.git"
+    "url": "git://github.com/MaverickEngine/abengine-server"
   },
   "keywords": [
     "api",
@@ -30,7 +29,7 @@
   "author": "Jason Norwood-Young <jason@10layer.com> (https://github.com/j-norwood-young/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/10layer/edji/issues"
+    "url": "https://github.com/MaverickEngine/abengine-server/issues"
   },
   "dependencies": {
     "dotenv": "^16.3.1"

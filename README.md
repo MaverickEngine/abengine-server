@@ -38,4 +38,4 @@ A client API is used to record hits and wins. It does not require authentication
 
 - "/win/:experiment_id" - Records a win for the experiment. This should be called when the user takes the action we want them to take.
 
-- "/autowin/:campaign_id" - Records a win for the experiment that was returned by the "/serve/:campaign_id" endpoint. This should be called when the user takes the action we want them to take, and we don't specifically have knowledge of which experiment won.
+- "/autowin/:campaign_id" - Records a win for the experiment that was returned by the "/serve/:campaign_id" endpoint. This should be called when the user takes the action we want them to take, and we don't specifically have knowledge of which experiment won. It will return the winning experiment, which is useful if you need to show it again, eg. a headline. 

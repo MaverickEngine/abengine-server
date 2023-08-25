@@ -116,16 +116,16 @@ server.get("/autowin/:campaign_id", async (req, res) => {
         try {
             campaign = (await edji.getOne("campaign", campaign_id)).data;
         } catch (err) {
-            return res.send({ autowin: false });
+            return res.send({ autowin: false, error: "Campaign not found" });
         }
         if (!campaign) {
-            return res.send({ autowin: false });
+            return res.send({ autowin: false, error: "No campaign" });
         }
         const cookies = req.cookies;
         if (cookies && cookies[`abengine_campaign_${campaign_id}`]) {
             const cookie_data = jwt.verify(cookies[`abengine_campaign_${campaign_id}`], secret);
             if (!cookie_data.hit) {
-                return res.send({ autowin: false });
+                return res.send({ autowin: false, error: "No hit" });
             }
             const win = await edji.post("win", {
                 experiment_id: cookie_data.experiment._id,
@@ -141,12 +141,12 @@ server.get("/autowin/:campaign_id", async (req, res) => {
                 utm_source: cookie_data.utm.utm_source,
                 utm_term: cookie_data.utm.utm_term,
             });
-            return res.send({ autowin: true, experiment_id: cookie_data.experiment._id, win });
+            return res.send({ autowin: true, experiment: cookie_data.experiment, win });
         }
-        return res.send({ autowin: false });
+        return res.send({ autowin: false, error: "No cookie" });
     } catch (err) {
         // console.log(err);
-        return res.send({ autowin: false });
+        return res.send({ autowin: false, error: err.message });
     }
 });
 

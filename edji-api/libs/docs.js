@@ -51,6 +51,10 @@ class Docs {
         const getCircularReplacer = () => { // https://stackoverflow.com/questions/11616630/how-can-i-print-a-circular-structure-in-a-json-like-format
             const seen = new WeakSet();
             return (key, value) => {
+                // console.log(key);
+                if (key === "type") {
+                    return value.schemaName;
+                }
                 if (typeof value === "object" && value !== null) {
                     if (seen.has(value)) {
                         return;
@@ -64,7 +68,9 @@ class Docs {
             if (!req.Model) {
                 return new errors.NotFoundError("Model not found")
             }
+            // console.log(req.Model.schema.obj)
             const safe_obj = JSON.parse(JSON.stringify(req.Model.schema.obj, getCircularReplacer()));
+            // console.log(safe_obj);
             res.send(safe_obj);
             next();
         } catch (err) {
@@ -104,7 +110,7 @@ class Docs {
     model(req, res, next) {
         try {
             const model = this.models[req.params.modelname];
-            console.dir(model.schema.opts);
+            // console.dir(model.schema.opts);
             const fields = Object.keys(model.schema.paths);     
             fields.sort();
             const perms = model.schema.opts.perms;

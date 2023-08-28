@@ -7,6 +7,7 @@ const login = require("./login");
 const groups = require("./groups");
 const setup = require("./setup");
 const Docs = require("./docs");
+const OpenAPI = require("./openapi");
 const querystring = require("querystring");
 const fs = require("fs");
 const morgan = require("morgan");
@@ -859,6 +860,7 @@ const JXP = function(options) {
 	ws.init({models});
 	cache.init(config);
 	const docs = new Docs({config, models});
+	const openapi = new OpenAPI({config, models});
 
 	// Set up our API server
 
@@ -1110,6 +1112,11 @@ const JXP = function(options) {
 	/* Cache */
 	server.get("/cache/stats", cache.stats, outputJSON);
 	server.get("/cache/clear", cache.clearAll, outputJSON);
+
+	/* OpenAPI */
+	server.get("/openapi.json", async (req, res) => {
+		res.send(await openapi.generate_spec(openapi));
+	});
 
 	return server;
 };

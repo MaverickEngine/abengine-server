@@ -1,7 +1,7 @@
 {
   "name": "@mavengine/abengine-server",
   "description:": "A smart server that advises you which version of an A/B test to show to a user",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "start": "node bin/server.js",

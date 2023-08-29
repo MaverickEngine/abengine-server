@@ -1,5 +1,9 @@
 # ABEngine Changelog
 
+## 0.0.3
+
+- Fix cookie path bug
+
 ## 0.0.2
 
 - Create this Changelog

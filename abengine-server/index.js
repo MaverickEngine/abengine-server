@@ -22,6 +22,11 @@ server.use(cors.preflight);
 server.use(cors.actual);
 server.use(CookieParser.parse);
 
+const cookie_opts = {
+    maxAge: 900000,
+    path: '/',
+}
+
 const EDJI = require("jxp-helper");
 let edji;
 
@@ -78,7 +83,7 @@ server.get("/serve/:campaign_id", async (req, res) => {
             utm,
         };
         const jwt_data = jwt.sign(cookie_data, secret);
-        res.setCookie(`abengine_campaign_${campaign_id}`, jwt_data, { maxAge: 900000 });
+        res.setCookie(`abengine_campaign_${campaign_id}`, jwt_data, cookie_opts);
         // Return the experiment
         res.send({experiment});
         

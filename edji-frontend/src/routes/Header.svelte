@@ -3,6 +3,8 @@
 	import logo from '$lib/images/edji-logo.svg';
 	import github from '$lib/images/github-mark-white.svg';
 
+	import Button from '$lib/ui/button.svelte';
+
 	export let logged_in = false;
 </script>
 
@@ -30,17 +32,19 @@
 		</ul>
 	</nav>
 
-	<div class="corner">
+	<div class="flex content-center items-center justify-center mr-4">
 		{#if (logged_in)}
 			<form method="POST" action="/logout">
-				<button type="submit">Logout</button>
+				<Button type="submit" size="sm">Logout</Button>
 			</form>
 		{:else}
-			<a href="/login">Login</a>
+			<a href="/login">
+				<Button size="sm">Login</Button>
+			</a>
 		{/if}
-		<a href="https://github.com/j-norwood-young/edji">
+		<!-- <a href="https://github.com/j-norwood-young/edji">
 			<img class="github" src={github} alt="GitHub" />
-		</a>
+		</a> -->
 	</div>
 </header>
 
@@ -51,7 +55,7 @@
 		background-color: rgb(50, 50, 50);
 	}
 
-	.corner {
+	/* .corner {
 		width: 6em;
 		height: 3em;
 	}
@@ -68,7 +72,7 @@
 		width: 5em;
 		height: 3em;
 		object-fit: contain;
-	}
+	} */
 
 	nav {
 		display: flex;

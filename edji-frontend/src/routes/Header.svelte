@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/edji-logo.svg';
-	import github from '$lib/images/github-mark-white.svg';
 
 	import Button from '$lib/ui/button.svelte';
 
@@ -42,9 +41,6 @@
 				<Button size="sm">Login</Button>
 			</a>
 		{/if}
-		<!-- <a href="https://github.com/j-norwood-young/edji">
-			<img class="github" src={github} alt="GitHub" />
-		</a> -->
 	</div>
 </header>
 

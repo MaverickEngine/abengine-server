@@ -59,7 +59,7 @@
            </ul>
         </div>
      </aside>
-    <main class="p-2 flex flex-col grow">
+    <main class="pl-2 pr-2 flex flex-col grow">
         <slot />
     </main>
 </div>

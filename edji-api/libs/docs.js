@@ -111,7 +111,7 @@ class Docs {
         try {
             const model = this.models[req.params.modelname];
             // console.dir(model.schema.opts);
-            const fields = Object.keys(model.schema.paths);     
+            const fields = Object.keys(model.schema.paths);
             fields.sort();
             const perms = model.schema.opts.perms;
             this.renderTemplate(res, "model", { model, fields, perms });

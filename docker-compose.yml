@@ -31,6 +31,7 @@ services:
     volumes:
       - ./edji-api/models:/opt/edji-api/models
       - ./edji-api/libs:/opt/edji-api/libs
+      - ./edji-api/openapi:/opt/edji-api/openapi
 
   frontend:
     build: ./edji-frontend

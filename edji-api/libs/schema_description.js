@@ -24,7 +24,9 @@ const getModelFileContents = (model_dir) => {
                             let model = {
                                 model: modelname,
                                 file: file,
-                                perms: modelobj.schema.get("_perms")
+                                perms: modelobj.schema.get("_perms"),
+                                properties: modelobj.schema.obj,
+                                paths: modelobj.schema.paths,
                             };
                             models.push(model);
                         }

@@ -1,4 +1,6 @@
-export function handle({ event, resolve }) {
-	event.locals.token = event.cookies.get('token');
-	return resolve(event);
-}
+import { handleSession } from 'svelte-kit-cookie-session';
+import {SECRET_KEY} from '$env/static/private'
+
+export const handle = handleSession({
+	secret: SECRET_KEY,
+});

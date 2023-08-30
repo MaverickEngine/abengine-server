@@ -1,8 +1,16 @@
 {
+<<<<<<< HEAD
   "name": "@mavengine/abengine-server",
   "description:": "A smart server that advises you which version of an A/B test to show to a user",
   "version": "0.0.3",
   "private": true,
+=======
+  "name": "@10layer/edji-frontend",
+  "description:": "An opinionated RESTful API library based on Mongoose and Restify. Make an API by just writing Mongoose models.",
+  "version": "2.14.1",
+  "private": false,
+  "main": "libs/jxp.js",
+>>>>>>> 16c7e712e377072c110900bba44cb1490b616ec1
   "scripts": {
     "start": "node bin/server.js",
     "dev": "nodemon bin/server.js",

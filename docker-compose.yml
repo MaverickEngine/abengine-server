@@ -31,16 +31,18 @@ services:
     volumes:
       - ./edji-api/models:/opt/edji-api/models
       - ./edji-api/libs:/opt/edji-api/libs
+      - ./edji-api/openapi:/opt/edji-api/openapi
 
   frontend:
     build: ./edji-frontend
     restart: unless-stopped
     ports:
-      - $FRONTEND_PORT:$FRONTEND_PORT
+      - $FRONTEND_PORT:8080
     stdin_open: true
     tty: true
     volumes:
       - ./edji-frontend/src:/opt/edji-frontend/src
+      - ./edji-frontend/package.json:/opt/edji-frontend/package.json
     env_file: ./.env
     environment:
       - API=api

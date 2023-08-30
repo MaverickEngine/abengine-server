@@ -1,7 +1,7 @@
 import { redirect }  from "@sveltejs/kit"
 import { check_status } from "$lib/api/edji.js"
 
-export async function load({ cookies }) {
+export async function load() {
     // Check status
     let status = {
         state: "unknown",
@@ -15,21 +15,12 @@ export async function load({ cookies }) {
         status.message = err.toString();
     }
     if (status.state === "setup") {
-		throw redirect(307, "/dashboard/setup")
+		throw redirect(307, "/setup")
 	}
-    // Check login
-    let logged_in = false;
     if (status.state === "ok") {
-        const token = cookies.get("token");
-        if (token) {
-            logged_in = true;
-        }
-        if (!logged_in) {
-            throw redirect(307, "/dashboard/login")
-        }
+        // Do some more checks here
     }
     return {
-        status,
-        logged_in
+        status
     };
 };

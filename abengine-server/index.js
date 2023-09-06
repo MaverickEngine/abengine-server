@@ -11,6 +11,7 @@ const axios = require("axios");
 var jwt = require('jsonwebtoken');
 let apikey = null;
 const secret = process.env.SECRET;
+const API_HOST = process.env.API_HOST;
 
 server.use(restify.plugins.bodyParser()); 
 const cors = corsMiddleware({
@@ -158,14 +159,14 @@ server.get("/autowin/:campaign_id", async (req, res) => {
 
 server.listen(80, async function () {
     try {
-        await axios.post("http://api:4001/setup", { email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD });
+        await axios.post(`${API_HOST}/setup`, { email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD });
     } catch (err) {
         console.log("Already setup");
     }
     const admin_email = process.env.ADMIN_EMAIL;
     const admin_password = process.env.ADMIN_PASSWORD;
-    const login = await axios.post("http://api:4001/login", { email: admin_email, password: admin_password });
+    const login = await axios.post(`${API_HOST}/login`, { email: admin_email, password: admin_password });
     apikey = login.data.apikey;
-    edji = new EDJI({ server: "http://api:4001", apikey });
+    edji = new EDJI({ server: `${API_HOST}`, apikey });
     console.log('%s listening at %s', server.name, server.url);
 });

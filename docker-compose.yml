@@ -26,6 +26,7 @@ services:
       - DB_PASSWORD=$MONGODB_PASSWORD
       - DB_NAME=$MONGODB_DATABASE
       - DB_PORT=$MONGODB_PORT
+      - PORT=$API_PORT
     stdin_open: true
     tty: true
     volumes:
@@ -45,8 +46,7 @@ services:
       - ./edji-frontend/package.json:/opt/edji-frontend/package.json
     env_file: ./.env
     environment:
-      - API=api
-      - API_PORT=$API_PORT
+      - API_HOST=http://api:$API_PORT
 
   abengine:
     depends_on:
@@ -62,10 +62,9 @@ services:
       - ./abengine-server:/opt/abengine-server
     env_file: ./.env
     environment:
-      - API=api
-      - API_PORT=$API_PORT
       - ADMIN_EMAIL=$ADMIN_EMAIL
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SECRET=$SECRET
+      - API_HOST=http://api:$API_PORT
 volumes:
   db:

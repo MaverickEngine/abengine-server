@@ -37,6 +37,7 @@ CampaignSchema.statics.create_campaign = async function (data) {
             throw new Error("No user_id provided");
         }
         const campaign_data = {
+            name: data.name,
             uid: data.uid,
             user_id: user_id,
             running: data.running,
@@ -50,6 +51,7 @@ CampaignSchema.statics.create_campaign = async function (data) {
         if (data.experiments) {
             for (let i = 0; i < data.experiments.length; i++) {
                 const experiment_data = {
+                    name: data.name,
                     campaign_id: campaign._id,
                     uid: data.experiments[i].uid,
                     value: data.experiments[i].value,

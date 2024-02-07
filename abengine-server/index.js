@@ -16,6 +16,7 @@ const API_HOST = process.env.API_HOST;
 server.use(restify.plugins.bodyParser()); 
 const cors = corsMiddleware({
     origins: ['*'],
+    credentials: true,
 });
 server.use(restify.plugins.bodyParser()); 
 server.use(restify.plugins.queryParser()); 
@@ -155,6 +156,28 @@ server.get("/autowin/:campaign_id", async (req, res) => {
         return res.send({ autowin: false, error: err.message });
     }
 });
+
+server.get("/report/:campaign_id", async (req, res) => {
+    try {
+        const { campaign_id } = req.params;
+        const campaign = (await edji.getOne("campaign", campaign_id)).data;
+        if (!campaign) {
+            return res.send(new errors.NotFoundError("Campaign not found"));
+        }
+        const experiments = (await edji.get("experiment", { "filter[campaign_id]": campaign_id })).data;
+        if (!experiments.length) {
+            return res.send(new errors.NotFoundError("No experiments found"));
+        }
+        const report = {
+            campaign,
+            experiments,
+        };
+        res.send(report);
+    } catch (err) {
+        console.log(err);
+        return res.send(new errors.InternalServerError(err));
+    }
+})
 
 
 server.listen(80, async function () {

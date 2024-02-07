@@ -11,6 +11,8 @@ services:
       - $MONGODB_PORT
     volumes:
       - db:/data/db
+    networks:
+      - abengine-backend
 
   api:
     depends_on:
@@ -33,6 +35,9 @@ services:
       - ./edji-api/models:/opt/edji-api/models
       - ./edji-api/libs:/opt/edji-api/libs
       - ./edji-api/openapi:/opt/edji-api/openapi
+    networks:
+      - abengine
+      - abengine-backend
 
   frontend:
     build: ./edji-frontend
@@ -47,6 +52,8 @@ services:
     env_file: ./.env
     environment:
       - API_HOST=http://api:$API_PORT
+    networks:
+      - abengine-backend
 
   abengine:
     depends_on:
@@ -66,5 +73,13 @@ services:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SECRET=$SECRET
       - API_HOST=http://api:$API_PORT
+    networks:
+      - abengine
+      - abengine-backend
 volumes:
   db:
+networks:
+  abengine:
+    driver: bridge
+  abengine-backend:
+    driver: bridge

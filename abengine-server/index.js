@@ -16,7 +16,7 @@ const API_HOST = process.env.API_HOST;
 server.use(restify.plugins.bodyParser()); 
 const cors = corsMiddleware({
     origins: ['*'],
-    credentials: true,
+    // credentials: true,
 });
 server.use(restify.plugins.bodyParser()); 
 server.use(restify.plugins.queryParser()); 

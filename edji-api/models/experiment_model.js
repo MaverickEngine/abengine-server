@@ -3,7 +3,7 @@
 const ExperimentSchema = new JXPSchema({
     name: { type: String, index: true, trim: true },
     campaign_id: { type: ObjectId, link: "Campaign", required: true, index: true },
-    uid: { type: String, trim: true, lowercase: true },
+    uid: { type: String, trim: true, lowercase: true, index: true },
     user_id: { type: ObjectId, link: "User", index: true },
     value: { type: Mixed },
     hits: { type: Number, default: 0 },

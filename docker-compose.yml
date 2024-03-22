@@ -15,9 +15,9 @@ services:
       - abengine-backend
 
   api:
+    image: jasony/edji-api
     depends_on:
       - mongodb
-    build: ./edji-api
     restart: unless-stopped
     env_file: ./.env
     ports:
@@ -31,24 +31,17 @@ services:
       - PORT=$API_PORT
     stdin_open: true
     tty: true
-    volumes:
-      - ./edji-api/models:/opt/edji-api/models
-      - ./edji-api/libs:/opt/edji-api/libs
-      - ./edji-api/openapi:/opt/edji-api/openapi
     networks:
       - abengine
       - abengine-backend
 
   frontend:
-    build: ./edji-frontend
+    image: jasony/edji-frontend
     restart: unless-stopped
     ports:
       - $FRONTEND_PORT:8080
     stdin_open: true
     tty: true
-    volumes:
-      - ./edji-frontend/src:/opt/edji-frontend/src
-      - ./edji-frontend/package.json:/opt/edji-frontend/package.json
     env_file: ./.env
     environment:
       - API_HOST=http://api:$API_PORT
